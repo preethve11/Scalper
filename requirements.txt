@@ -1,0 +1,4 @@
+# Scalperr is a Node.js project. Dependencies are in package.json.
+# Install with: npm install
+#
+# Runtime: Node.js >= 18

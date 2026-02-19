@@ -1,0 +1,73 @@
+# Scalperr Trading Bot - Strategy & Risk Configuration
+# Override via environment variables where documented.
+
+# ---------------------------------------------------------------------------
+# Strategy: Scalping (TA + Whale Index)
+# ---------------------------------------------------------------------------
+strategy:
+  # Timeframe for candle-based indicators (live builds 1m candles from stream)
+  timeframeMinutes: 1
+  # Minimum candle history before generating signals (e.g. 50 for RSI/MACD/BB)
+  minCandleHistory: 50
+
+  # Entry: BUY when buyScore > entryThreshold and buyScore > sellScore
+  entryThreshold: 0.3
+  # Confidence threshold to execute live trade (0–1)
+  minConfidenceToExecute: 0.7
+
+  # Technical indicators
+  indicators:
+    rsiPeriod: 14
+    rsiOversold: 30
+    rsiOverbought: 70
+    macdFast: 12
+    macdSlow: 26
+    bollingerPeriod: 20
+    bollingerStdDev: 2
+    smaShort: 20
+    smaLong: 50
+    emaShort: 12
+    emaLong: 26
+
+  # Whale index: boost confidence when WSI > whaleBullishThreshold
+  whaleBullishThreshold: 50
+  whaleConfidenceBoost: 0.1
+
+# ---------------------------------------------------------------------------
+# Risk Management
+# ---------------------------------------------------------------------------
+risk:
+  # Max fraction of balance (0–1) per trade; e.g. 0.1 = 10%
+  maxTradePctPerTrade: 0.1
+  # Minimum balance (USD) below which no new trades
+  minBalanceUSD: 100
+  # Stop loss: exit long when price drops this % below entry (0 = disabled)
+  stopLossPct: 2.0
+  # Take profit: exit long when price rises this % above entry (0 = disabled)
+  takeProfitPct: 1.5
+  # Max open positions (tokens) at once
+  maxOpenPositions: 1
+  # Fixed notional (USD) per trade when not using % (optional override)
+  fixedNotionalUSD: null
+
+# ---------------------------------------------------------------------------
+# Backtest
+# ---------------------------------------------------------------------------
+backtest:
+  initialBalanceUSD: 10000
+  # Commission/slippage assumption (e.g. 0.001 = 0.1%)
+  commissionPct: 0.1
+  # RSI-only strategy (runStrategy) thresholds
+  rsiBuyBelow: 30
+  rsiSellAbove: 70
+
+# ---------------------------------------------------------------------------
+# Execution (live)
+# ---------------------------------------------------------------------------
+execution:
+  # dry | live
+  mode: dry
+  slippageBps: 50
+  maxRetries: 3
+  retryDelayMs: 1000
+  minSolBalanceLamports: 10000000
