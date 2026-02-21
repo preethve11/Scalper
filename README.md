@@ -180,8 +180,4 @@ scalperr/
 - Prefer environment variables (and optionally `config.yaml`) for sensitive or environment-specific settings.
 - For production, use a dedicated wallet and consider rate limits and monitoring.
 
----
 
-## License
-
-ISC (see `package.json`).
