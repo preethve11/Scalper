@@ -1,11 +1,11 @@
 {
   "name": "scalperr",
-  "version": "1.0.0",
   "type": "module",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "tsx src/index.ts",
     "dev": "tsx src/index.ts",
     "backtest": "tsx src/index.ts --backtest",
     "test": "echo \"Error: no test specified\" && exit 1"
